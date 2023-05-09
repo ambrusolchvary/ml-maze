@@ -1,2 +1,2 @@
 # ml-maze
-Machine earning with reinforcement learning in maze
+AI with reinforcement learning in maze
