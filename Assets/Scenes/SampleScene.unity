@@ -473,14 +473,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 10, z: -15}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 9, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &1189068357
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,8 +622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4837f4abcef555409c5107ff89c8cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 20
-  height: 20
+  width: 4
+  height: 4
   size: 1
   wallPrefab: {fileID: 3495958046185666090, guid: 304db1f134ff12045a76df891c84710a, type: 3}
   floorPrefab: {fileID: 634900085634603167, guid: c2536af29a86e154f82a0b8789b78493, type: 3}

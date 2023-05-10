@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 // [RequireComponent(typeof(MazeRenderer))]
 public class SphereAgentLogic : Agent {
 
-    private WallState[,] maze = null;
+    private Cell[,] maze = null;
     private int mazeWidth = 10;
     private int mazeHeight = 10;
 
@@ -54,6 +54,9 @@ public class SphereAgentLogic : Agent {
         Target.localPosition = new Vector3(Mathf.RoundToInt(Random.value * (mazeWidth - 1) - mazeWidth / 2),
                                            0.5f,
                                            Mathf.RoundToInt(Random.value * (mazeHeight - 1) - mazeHeight / 2));
+
+        this.agentBody.angularVelocity = Vector3.zero;
+        this.agentBody.velocity = Vector3.zero;
     }
 
     public override void CollectObservations( VectorSensor sensor ) {
@@ -97,7 +100,7 @@ public class SphereAgentLogic : Agent {
         return tooClose;
     }
 
-    public float forceMultiplier = 10;
+    public float forceMultiplier = 2;
     public override void OnActionReceived( ActionBuffers actions ) {
         // Negative reward due to shorter time to the goal is the better, don't waste time
         AddReward(-0.005f);
@@ -114,17 +117,19 @@ public class SphereAgentLogic : Agent {
         int Z = Mathf.RoundToInt(this.transform.localPosition.z);
         int j = Z + (mazeHeight / 2);
         Vector3 actualCell = new Vector3(X, 1, Z);
+
+        maze[i,j].floor.GetComponent<Renderer>().material.color = Color.red;
         //Debug.Log(actualCell);
         //Debug.Log("Oszlop:" + i);
         //Debug.Log("Sor:" + j);
-       // Debug.Log("WallState: " + MazeRenderer.maze[i, j]);
+        // Debug.Log("WallState: " + MazeRenderer.maze[i, j]);
         //MazeRenderer.maze[i, j] |= WallState.UP | WallState.RIGHT | WallState.DOWN | WallState.LEFT | WallState.VISITED;
         //Debug.Log("Utana: " + MazeRenderer.maze[i, j]);
 
 
 
-        
-        WallState actualCellState = maze[i, j];
+
+        WallState actualCellState = maze[i, j].wallState;
         if(WallIsTooClose(actualCellState)) {
             AddReward(-0.2f);
             mazeRenderer.GetComponent<MazeRenderer>().Reset();
